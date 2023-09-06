@@ -88,4 +88,3 @@ async function getMessages() {
 buscaMessages = setInterval(getMessages, 1000);
 
 getMessages();
-
