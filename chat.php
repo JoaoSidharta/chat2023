@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="chat2023-projeto de PRW">
+    <link rel="stylesheet" href="./static/css/chatstyle.css">
     <title>chat2023-chat</title>
 </head>
 <body>
