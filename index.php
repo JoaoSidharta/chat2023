@@ -10,8 +10,18 @@
 </head>
 <body>
     <div class="titulo">
-        <
+        <h1>Chat2023</h1>
     </div>
+    <div class="container">
+        <div class="janeladelogin">
+            <h1>login</h1>
+            <br>
+                <input type="text" name="nome" id="nome" placeholder="Coloque seu nome de usuario...">
+                <button type="submit" onclick="Login()">Login</button>
+        </div>
+    </div>
+
+    <script src="./static/js/login.js"></script>
     
 </body>
 </html>
