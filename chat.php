@@ -14,6 +14,7 @@
             <h1 id="usuario"></h1>
         </div>
         <div class="chat" id="chat">
+        </div>
             <div class="envio">
                 <input type="text" name="mensagem" id="mensagem" placeholder="mensagem">
                 <button type="submit" onclick="enviar()">enviar</button>
