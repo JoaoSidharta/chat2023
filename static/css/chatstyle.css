@@ -2,5 +2,28 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
+    font-family: 'Roboto', sans-serif;
+}
+
+html::-webkit-scrollbar{
+    width: 10px;
+}
+
+html::-webkit-scrollbar-thumb{
+    border-radius: 50px;
+    background: #04ADBF;
+}
+
+html::-webkit-scrollbar-track{
+    background: #ededed;
+}
+
+body{
+    background-color: #04ADBF;
+    background-image: url("https://www.transparenttextures.com/patterns/escheresque-dark.png");
+    padding: 30px;
+}
+
+.chat{
+    height: 70vh;
 }
