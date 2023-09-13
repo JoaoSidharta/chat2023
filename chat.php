@@ -21,7 +21,7 @@
             </div>
         </div>
         
-        <script src="./static/js/mensagem.js"></script>
+        <script src="./static/js/mensagens.js"></script>
     
 </body>
 </html>
