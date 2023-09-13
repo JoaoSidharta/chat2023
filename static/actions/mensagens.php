@@ -11,7 +11,7 @@ $values = array();
 $pattern = '/<a\s+(?:[^>]*?\s+)?href=([\'"])(.*?)\1[^>]*>.*?<\/a>/i';
 
 foreach ($resultado as $linha) { 
-    $values[] = '{"nome": "' . $linha['nome'] . '", "mensagem": "' . preg_replace($pattern, '', str_replace('"', '&quot;', $linha['mensagem'])) . '", "data": "' . $linha['data'] . '"}';
+    $values[] = '{"nome": "' . preg_replace($pattern, '', str_replace('"', '&quot;', $linha['nome'])) . '", "mensagem": "' . preg_replace($pattern, '', str_replace('"', '&quot;', $linha['mensagem'])) . '", "data": "' . $linha['data'] . '"}';
 }
 
 $values = array_reverse($values);
