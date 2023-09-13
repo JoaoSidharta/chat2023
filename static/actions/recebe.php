@@ -10,12 +10,13 @@ if(isset($_POST)){
 
     print_r($msg);
 
-    $nome = $msg['nome'];
+    $nome = filter_var($msg['nome'], FILTER_SANITIZE_SPECIAL_CHARS);
+    if (empty($nome)) {
+        header('location: index.php');
+        exit;
+    }
 
     $mensagem = filter_var($msg['mensagem'], FILTER_SANITIZE_SPECIAL_CHARS);
-    if (empty($mensagem)) {
-        $mensagem = 'Removido pois infringiu as regras do chat.';
-    }
 
     $data = date('Y-m-d H:i:s');
 
