@@ -23,4 +23,4 @@ if(isset($_POST)){
     $sql = "INSERT INTO chat (nome, mensagem, data) VALUES ('$nome', '$mensagem', '$data')";
 
     $conexao->query($sql);
-    }
+}
