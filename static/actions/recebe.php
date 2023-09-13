@@ -9,3 +9,11 @@ if(isset($_POST)){
     $msg = json_decode($data, true);
 
     print_r($msg);
+
+    $nome = $msg['nome'];
+
+    $mensagem = filter_var($msg['mensagem'], FILTER_SANITIZE_SPECIAL_CHARS);
+    if (empty($mensagem)) {
+        $mensagem = 'Removido pois infringiu as regras do chat.';
+    }
+    }
