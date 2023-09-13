@@ -16,4 +16,8 @@ if(isset($_POST)){
     if (empty($mensagem)) {
         $mensagem = 'Removido pois infringiu as regras do chat.';
     }
+
+    $data = date('Y-m-d H:i:s');
+
+    
     }
