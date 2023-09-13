@@ -19,5 +19,7 @@ if(isset($_POST)){
 
     $data = date('Y-m-d H:i:s');
 
-    
+    $sql = "INSERT INTO chat (nome, mensagem, data) VALUES ('$nome', '$mensagem', '$data')";
+
+    $conexao->query($sql);
     }
