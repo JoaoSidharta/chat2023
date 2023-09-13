@@ -20,6 +20,7 @@ async function Enviar() {
         alert("Você não está logado");
         window.location = "index.php";
     }
+
     //verifica se o campo mensagem está vazio
     if (mensagem.value == "") {
         alert("Preencha o campo mensagem");
@@ -38,8 +39,11 @@ async function Enviar() {
                 "Content-type": "application/json; charset=UTF-8"
             }
         });
+
         console.log(mensagem.value);
+
         console.log(dados);
+        
         if (res.ok) {
             console.log(res);
             mensagem.value = "";
