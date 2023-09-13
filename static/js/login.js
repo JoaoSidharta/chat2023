@@ -15,7 +15,7 @@ function Login() {
 }
 
 //verifica se o usuário apertou enter
-document.addEventListener("keypress", (event)=>{
+document.addEventListener("keypress", (event) => {
     if (event.key == "Enter") {
         Login();
     }

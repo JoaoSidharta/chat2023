@@ -5,13 +5,13 @@ var usuario = document.getElementById("usuario");
 //pega o campo mensagem
 var mensagem = document.getElementById("mensagem");
 //array para salvar as iformações do usuário e da mensagem
-const dados = { nome: nome, texto: ""};
+const dados = { nome: nome, texto: "" };
 
 //coloca o nome do usuário no chat
 usuario.innerHTML = nome;
 
 //função para enviar a mensagem
-async function Enviar(){
+async function Enviar() {
     //remove os espaços do começo e do final da mensagem
     mensagem.value = mensagem.value.trim();
 
@@ -25,8 +25,8 @@ async function Enviar(){
         alert("Preencha o campo mensagem");
     } else {
         //salva a mensagem no array dados
-        dados.texto = mensagem.value;
-        
+        dados.mensagem = mensagem.value;
+
         //envia a mensagem para o arquivo recebe.php
         res = await fetch("./static/actions/recebe.php", {
             //define o método como POST
@@ -38,19 +38,22 @@ async function Enviar(){
                 "Content-type": "application/json; charset=UTF-8"
             }
         });
-
+        console.log(mensagem.value);
+        console.log(dados);
         if (res.ok) {
             console.log(res);
-            mensagem.value = "";  
+            mensagem.value = "";
         } else {
             alert("Erro ao enviar a mensagem");
             href = "index.php";
         }
-    } 
+
+
+    }
 }
 
 //verifica se o usuário apertou enter
-document.addEventListener("keypress", (event)=>{
+document.addEventListener("keypress", (event) => {
     if (event.key == "Enter") {
         //chama a função Enviar
         Enviar();
@@ -58,33 +61,54 @@ document.addEventListener("keypress", (event)=>{
 })
 
 //função para buscar as mensagens
+// Variável para rastrear se o usuário rolou o chat para cima
+var usuarioRolouParaCima = false;
+
+// Função para verificar a posição do scroll
+function verificarPosicaoScroll() {
+    // Obtenha o elemento do chat
+    var chat = document.getElementById('chat');
+
+    // Verifique se o usuário rolou para cima (subtraindo 10 pixels como margem)
+    usuarioRolouParaCima = chat.scrollTop < chat.scrollHeight - chat.clientHeight - 10;
+}
+
+// Adicione um evento de rolagem ao chat para verificar a posição
+var chat = document.getElementById('chat');
+chat.addEventListener('scroll', verificarPosicaoScroll);
+
+// Função para buscar mensagens
 async function getMessages() {
     console.log("Buscando mensagens...");
-    //busca as mensagens no arquivo mensagens.php
+    // Busca as mensagens no arquivo mensagens.php
     results = await fetch("./static/actions/mensagens.php")
         .then((data) => {
             return data.json();
         })
 
-    //variavel para colocar as mensagens
+    // Variável para colocar as mensagens
     var mensagens = document.getElementById("mensagens");
-    //limpa as mensagens
+    // Limpa as mensagens
     mensagens.innerHTML = "";
-    //coloca as mensagens no chat
+    // Coloca as mensagens no chat
     results.forEach((result) => {
-        //verifica se a mensagem é do usuário
+        // Verifica se a mensagem é do usuário
         if (result.nome == nome) {
             mensagens.innerHTML += `<div class="mensagemUsuario"><h1>${result.nome}:</h1> <p>${result.mensagem}</p> <p>${result.data}</p></div>`;
-        //verifica se a mensagem é do sistema
+            // Verifica se a mensagem é do sistema
         } else {
             mensagens.innerHTML += `<div class="mensagem"><h1>${result.nome}:</h1> <p>${result.mensagem}</p> <p>${result.data}</p></div>`;
         }
     });
-    //variavel para colocar o chat no final
-    chat = document.getElementById('chat');
-    //coloca o chat no final
-    chat.scrollTop = chat.scrollHeight;
+
+    // Se o usuário não rolou para cima, mantenha-o no final
+    if (!usuarioRolouParaCima) {
+        chat.scrollTop = chat.scrollHeight;
+    }
 }
+
+// Execute a função getMessages a cada segundo
 buscaMessages = setInterval(getMessages, 1000);
 
+// Chame a função getMessages inicialmente
 getMessages();
