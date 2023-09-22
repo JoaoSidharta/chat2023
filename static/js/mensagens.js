@@ -108,7 +108,7 @@ async function getMessages() {
 }
 
 // Execute a função getMessages a cada segundo
-buscaMessages = setInterval(getMessages, 3000);
+buscaMessages = setInterval(getMessages, 100);
 
 // Chame a função getMessages inicialmente
 getMessages();
