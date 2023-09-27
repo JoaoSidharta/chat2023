@@ -1,5 +1,7 @@
 //pega o campo nome
 var nome = document.getElementById("nome");
+var cor = document.getElementById("CorDoUsuario");
+var img = document.getElementById("imgDoUsuario");
 
 //função para logar
 function Login() {
@@ -9,6 +11,8 @@ function Login() {
     } else {
         //salva o nome no sessionStorage
         sessionStorage.setItem("nome", nome.value);
+        sessionStorage.setItem("cor", cor.value);
+        sessionStorage.setItem("img", img.value);
         //redireciona para a página do chat
         window.location = "chat.php";
     }

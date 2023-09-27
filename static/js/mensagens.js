@@ -1,11 +1,17 @@
 //pega o nome do usuário salvo no sessionStorage
 var nome = sessionStorage.getItem("nome");
+//pega a cor do usuário salvo no sessionStorage
+var cor = sessionStorage.getItem("cor");
+//pega a img do usuário salvo no sessionStorage
+var img = sessionStorage.getItem("img");
 //variavel para colocar o nome do usuário no chat
 var usuario = document.getElementById("usuario");
 //pega o campo mensagem
 var mensagem = document.getElementById("mensagem");
 //array para salvar as iformações do usuário e da mensagem
-const dados = { nome: nome, texto: "" };
+var dados = { nome: nome, mensagem: "", cor: cor, img: img};
+console.log(dados);
+
 
 //coloca o nome do usuário no chat
 usuario.innerHTML = nome;
@@ -94,10 +100,10 @@ async function getMessages() {
     results.forEach((result) => {
         // Verifica se a mensagem é do usuário
         if (result.nome == nome) {
-            mensagens.innerHTML += `<div class="mensagemUsuario"><h1>${result.nome}:</h1> <p>${result.mensagem}</p> <p>${result.data}</p></div>`;
+            mensagens.innerHTML += `<div class="mensagemUsuario"><h1  style="color: ${result.cor};"><img src="./static/img/${result.img}.jpg" alt="neymar" style="height: 80px; width: 80px; border-radius: 100%;">${result.nome}:</h1> <p>${result.mensagem}</p> <p>${result.data}</p></div>`;
             // Verifica se a mensagem é do sistema
         } else {
-            mensagens.innerHTML += `<div class="mensagem"><h1>${result.nome}:</h1> <p>${result.mensagem}</p> <p>${result.data}</p></div>`;
+            mensagens.innerHTML += `<div class="mensagem"><h1  style="color: ${result.cor};"><img src="./static/img/${result.img}.jpg" alt="neymar" style="height: 80px; width: 80px; border-radius: 100%;">${result.nome}:</h1> <p>${result.mensagem}</p> <p>${result.data}</p></div>`;
         }
     });
 
@@ -108,7 +114,7 @@ async function getMessages() {
 }
 
 // Execute a função getMessages a cada segundo
-buscaMessages = setInterval(getMessages, 100);
+buscaMessages = setInterval(getMessages, 1000);
 
 // Chame a função getMessages inicialmente
 getMessages();

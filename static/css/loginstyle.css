@@ -76,6 +76,27 @@ button:hover {
     -webkit-backdrop-filter: blur(4.3px);
 }
 
+#CorDoUsuario {
+    margin: 0;
+    padding: 0;
+    background-color: none;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 0;
+}
+
+.avatar {
+    height: 140px;
+    overflow: auto;
+    padding: 10px;
+    background-color: #04ADBF;
+    margin: auto;
+}
+
+.avatar button {
+    margin-bottom: 10px;
+}
 
 @media screen and (max-width: 768px) {
     .container {

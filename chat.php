@@ -20,10 +20,13 @@
             </div>
         </div>
         <div class="envio">
+            <!--esses sao os inputs que vai coletar os dados-->
             <input type="text" name="mensagem" id="mensagem" placeholder="Mensagem">
+            <!--esse botao chama a funcao enviar-->
             <button type="submit" onclick="Enviar()">Enviar</button>
         </div>
     </div>
+    <!--esse script coleta a mensagem-->
     <script src="./static/js/mensagens.js"></script>
 </body>
 
